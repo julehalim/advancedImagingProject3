@@ -1,0 +1,10 @@
+resolution selected at 1/5
+with 4x times each point
+indoor...10m setting
+capture colors too
+
+
+mls
+10 secs to capture the environment
+move it around to capture the top parts of each area
+walk around and capture
