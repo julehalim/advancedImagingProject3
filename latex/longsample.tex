@@ -33,6 +33,9 @@
 
 \usepackage[american]{babel}
 
+\usepackage{caption} % For captioning outside figures
+\usepackage{capt-of} % For captioning outside figures
+
 \usepackage{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
@@ -48,9 +51,7 @@
 \section{Introduction}
 
 
-\Textcite{vonDavier2011} said this,
-too \parencite{vonDavier2011,Lassen2006}.  Further evidence comes from
-other sources \parencite{Shotton1989,Lassen2006}.  
+\Textcite{Jones2022} said this
 
 \section{Method}
 
@@ -58,10 +59,11 @@ other sources \parencite{Shotton1989,Lassen2006}.
 
 
 \section{Results}
-Table~\ref{tab:BasicTable} summarizes the data. \lipsum[15]
+Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
+\vspace{20pt}
 
-\begin{table}
-  \caption{Sample Basic Table}
+\begin{minipage}{\linewidth}
+  \captionof{table}{Sample Basic Table}
   \label{tab:BasicTable}
   \begin{tabular}{@{}llr@{}}         \toprule
   \multicolumn{2}{c}{Item}        \\ \cmidrule(r){1-2}
@@ -72,16 +74,20 @@ Table~\ref{tab:BasicTable} summarizes the data. \lipsum[15]
   Emu       & stuffed     & 33.33 \\
   Armadillo & frozen      &  8.99 \\ \bottomrule
   \end{tabular}
-\end{table}
+\end{minipage}
 
-\begin{figure}
-    \caption{This is my first figure caption.}
-    \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/Figure1.pdf}
-    \figurenote{This is a great figure.}
-    \label{fig:Figure1}
-\end{figure}
+\vspace{20pt}
 
-Figure~\ref{fig:Figure1} shows this trend. \lipsum[16]
+\lipsum[1]
+
+Figure~\ref{fig:Figure1} shows this trend.
+
+\vspace{20pt}
+\begin{minipage}{\linewidth}
+  \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/Figure1.pdf}
+  \captionof{figure}{This is my first figure caption.}
+  \label{fig:Figure1}
+\end{minipage}
 
 \section{Discussion}
 \lipsum[17]
@@ -92,51 +98,6 @@ Figure~\ref{fig:Figure1} shows this trend. \lipsum[16]
 
 \printbibliography
 
-\appendix
-
-\section{Instrument}
-\label{app:instrument}
-
-As shown in Figure~\ref{fig:Figure2}, these results are impressive. \lipsum[20]
-
-\begin{figure}
-    \caption{This is my second figure caption.}
-    \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/Figure1.pdf}
-    \figurenote{This is a great appendix figure.}
-    \label{fig:Figure2}
-\end{figure}
-
-\lipsum[21]
-\section{Pilot Data}
-\label{app:surveydata}
-
-The detailed results are shown in Table~\ref{tab:DeckedTable}. \lipsum[22]
-
-\begin{table}
-  \begin{threeparttable}
-    \caption{A More Complex Decked Table}
-    \label{tab:DeckedTable}
-    \begin{tabular}{@{}lrrr@{}}         \toprule
-    Distribution type  & \multicolumn{2}{l}{Percentage of} & Total number   \\
-                       & \multicolumn{2}{l}{targets with}  & of trials per  \\
-                       & \multicolumn{2}{l}{segment in}    & participant    \\ \cmidrule(r){2-3}
-                                    &  Onset  &  Coda            &          \\ \midrule
-    Categorical -- onset\tabfnm{a}  &    100  &     0            &  196     \\
-    Probabilistic                   &     80  &    20\tabfnm{*}  &  200     \\
-    Categorical -- coda\tabfnm{b}   &      0  &   100\tabfnm{*}  &  196     \\ \midrule
-    \end{tabular}
-    \tablenote{All data are approximate.
-
-            \tabfnt{a}Categorical may be onset.
-            \tabfnt{b}Categorical may also be coda.
-
-            \tabfnt{*}\textit{p} < .05.
-            \tabfnt{**}\textit{p} < .01.
-         }
-  \end{threeparttable}
-\end{table}
-
-\lipsum[23]
 
 \end{document}
 
