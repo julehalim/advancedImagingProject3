@@ -42,16 +42,38 @@
 
 \title{Laser Scanning Comparison Using CloudCompare}
 \shorttitle{}
-
 \authorsnames{Jule Valendo Halim -1425567}
 \authorsaffiliations{GEOM90038 - Advanced Imaging}
 
 \begin{document}
 \maketitle
-\section{Introduction}
+\vspace{-6em}
+\section{Introduction\vspace{-5em}}
+
+Light detection and ranging (LiDAR) sensor consists of a transmitter and a receiver. The transmitter contains a laser that emits beams of light, while the receiver collects the photons that return from the transmitted laser (\Textcite{wandinger2005}). Figure 1 shows a simple representation of a LiDAR system.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/lidarSetup.png}
+  \captionof{figure}{Principle setup of a LiDAR system (\Textcite{wandinger2005})}
+  \label{fig:lidarSetup}
+\end{minipage}
+
+Multiple forms of LiDAR systems can be used for various applications. For example, \Textcite{conti2024} compared two applications of LiDAR sensors in the use of an Italian town hall building. The two sensor applications are terrestrial and mobile laser scanners (TLS and MLS respectively). A terrestrial laser scanner uses a LiDAR sensor mounted on a tripod and scans the area around it. Meanwhile, the MLS is a handheld LiDAR sensor that can be carried and transported with one hand. Figure 2 shows a MLS and TLS device.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/HoverMap.png}
+  \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/FaroFocus.png}
+  \captionof{figure}{Hovermap Emesent MLS (left) (\Textcite{emesent}) and FAROFocus TLS (right) (\Textcite{FARO})}
+  \label{fig:TLSandMLS}
+\end{minipage}
 
 
-\Textcite{Jones2022} said this
+
+\Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare. This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
+
+The overall procedure in investigating both LiDAR systems involves with firstly determining hardware settings and object to be scanned, followed by performing the scan to create a dense point cloud. The resulting point clouds will then be aligned and compared to each other qualitative and quantitatively. More details regarding the project procedure will be discussed in the methods section.
+
+
 
 \section{Method}
 
