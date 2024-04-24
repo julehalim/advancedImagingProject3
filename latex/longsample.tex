@@ -67,7 +67,7 @@ Multiple forms of LiDAR systems can be used for various applications. For exampl
   \label{fig:TLSandMLS}
 \end{minipage}
 
-\Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare. This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
+\Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare (\Textcite{cloudcomparesoftware}). This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
 
 The overall procedure in investigating both LiDAR systems involves with firstly determining hardware settings and object to be scanned, followed by performing the scan to create a dense point cloud. The resulting point clouds will then be aligned and compared to each other qualitative and quantitatively. More details regarding the project procedure will be discussed in the methods section.
 
@@ -108,11 +108,22 @@ Coarse registration is done by using the align (point pairs picking) tool in Clo
 
 Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only possible after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. 
 
-For both registrations, the RMSE (in meters) and transformation matrices were recorded after registration was completed.
+For both registrations, the registration errors (RMSE) (in meters) and transformation matrices were recorded after registration was completed.
 
 \subsection{Cloud to Cloud Distance}
 
-The setting was initially set to not have a max distance, which showed distances of up to 12 relative units away. This was done to investigate the approximate distances 
+Cloud to cloud distances were then calculated using the Cloud-Cloud Dist tool. This tool calculates the distances from the points present in each cloud. Initally, there was no maximum distance placed this distance to distance calculation. This was done in order to identify what areas have high distances. Figure \ref{fig:nomaxdistance} shows the cloud to cloud distance without any maximum distance. 
+
+
+Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9m), and that the RMSEs obtained from registration was approximately 0.2m, the maximum distance was set at 1 in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4m and 8m). However, these proved to be not very informative as the entire overlapping area only had one colour.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/noMaxDistance.png}
+  \captionof{figure}{Cloud to Cloud Distance Without Maximum Distance}
+  \label{fig:nomaxdistance}
+\end{minipage}
+
+After cloud to cloud distances were obtained and visualized, the TLS and MLS point clouds were exported as text files for further analysis in the results section. 
 
 \section{Results}
 Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
@@ -132,25 +143,8 @@ Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
   \end{tabular}
 \end{minipage}
 
-\vspace{20pt}
-
-\lipsum[1]
-
-Figure~\ref{fig:Figure1} shows this trend.
-
-\vspace{20pt}
-\begin{minipage}{\linewidth}
-  \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/Figure1.pdf}
-  \captionof{figure}{This is my first figure caption.}
-  \label{fig:Figure1}
-\end{minipage}
 
 \section{Discussion}
-\lipsum[17]
-
-\lipsum[18]
-
-\lipsum[19]
 
 \printbibliography
 
