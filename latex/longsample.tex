@@ -73,20 +73,20 @@ The overall procedure in investigating both LiDAR systems involves with firstly 
 
 \section{Method}
 
-\subsection{Initial Settings}
+\subsection{Initial Settings and Point Cloud Capturing}
 
-For the remainder of the report, the MLS will refer to the Hovermap Emesent and the TLS will refer to the FAROFocus.
+The building chosen was a room in the University of Melbourne Building 207-221 Bouverie St. For the remainder of the report, the MLS will refer to the Hovermap Emesent and the TLS will refer to the FAROFocus.
 
 Initial settings were set to capture an indoor area with a range of 10m (ie., the room boundaries are within 10m of the TLS). The TLS was also configured to capture images using colour. Afterwards, the resolution and quality settings are set to 1/5 and 4x respectively. The resolution indicates that one in every 5 points would be scanned, and the quality indicates that each of these scans would occur 4 times. Additional setting for the TLS such as the pixel dimensions of each scan and time taken 
-for the scan can be seen in figure \ref{fig:TLSSettings}.
+for the scan can be seen in figure \ref{fig:TLSSettings}. A scan was then executed with these settings
 
 \begin{minipage}{\linewidth}
-  \includegraphics[height=\textheight/2 ,width=\textwidth/2]{figures/IMG20240418194000.jpg}
+  \includegraphics[height=\textheight/3 ,width=\textwidth/3]{figures/IMG20240418194000.jpg}
   \captionof{figure}{Settings for the TLS}
   \label{fig:TLSSettings}
 \end{minipage}
 
-The MLS was first connected to its mobile app. After this connection is established, the app can be used to control its operation (ie., starting and stopping its scan.)
+The MLS was first connected to its mobile app. After this connection is established, the app can be used to control its operation (ie., starting and stopping its scan). The MLS was moved around the room and for each area, the MLS was held for a few seconds to ensure that it could capture the entire area. Places where might not be captured by the MLS easily (e.g., under a table or an object that is high on the walls) would be further scanned using different angles.
 
 
 \subsection{TLS and MLS Point Cloud Alignment}
@@ -108,9 +108,11 @@ Coarse registration is done by using the align (point pairs picking) tool in Clo
 
 Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only possible after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. 
 
-For both registrations, the RMSE and transformation matrices were recorded after registration was completed.
+For both registrations, the RMSE (in meters) and transformation matrices were recorded after registration was completed.
 
 \subsection{Cloud to Cloud Distance}
+
+The setting was initially set to not have a max distance, which showed distances of up to 12 relative units away. This was done to investigate the approximate distances 
 
 \section{Results}
 Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
