@@ -688,7 +688,7 @@
 
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
     {\b@level@three@skip}{\e@level@three@skip}%
-    {\normalfont\normalsize\bfseries\itshape}}
+    {\hspace{1em}\normalfont\normalsize\bfseries\itshape}}
 
 \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
     {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
