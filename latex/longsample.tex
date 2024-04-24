@@ -50,7 +50,7 @@
 \vspace{-6em}
 \section{Introduction\vspace{-5em}}
 
-Light detection and ranging (LiDAR) sensor consists of a transmitter and a receiver. The transmitter contains a laser that emits beams of light, while the receiver collects the photons that return from the transmitted laser (\Textcite{wandinger2005}). Figure 1 shows a simple representation of a LiDAR system.
+Light detection and ranging (LiDAR) sensor consists of a transmitter and a receiver. The transmitter contains a laser that emits beams of light, while the receiver collects the photons that return from the transmitted laser (\Textcite{wandinger2005}). Figure \ref{fig:lidarSetup} shows a simple representation of a LiDAR system.
 
 \begin{minipage}{\linewidth}
   \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/lidarSetup.png}
@@ -58,7 +58,7 @@ Light detection and ranging (LiDAR) sensor consists of a transmitter and a recei
   \label{fig:lidarSetup}
 \end{minipage}
 
-Multiple forms of LiDAR systems can be used for various applications. For example, \Textcite{conti2024} compared two applications of LiDAR sensors in the use of an Italian town hall building. The two sensor applications are terrestrial and mobile laser scanners (TLS and MLS respectively). A terrestrial laser scanner uses a LiDAR sensor mounted on a tripod and scans the area around it. Meanwhile, the MLS is a handheld LiDAR sensor that can be carried and transported with one hand. Figure 2 shows a MLS and TLS device.
+Multiple forms of LiDAR systems can be used for various applications. For example, \Textcite{conti2024} compared two applications of LiDAR sensors in the use of an Italian town hall building. The two sensor applications are terrestrial and mobile laser scanners (TLS and MLS respectively). A terrestrial laser scanner uses a LiDAR sensor mounted on a tripod and scans the area around it. The TLS is able to capture a wide area through a mirror within the hardware that can rotate and reflect the lasers in many angles. Meanwhile, the MLS is a handheld LiDAR sensor that can be carried and transported with one hand. Capturing wider areas with this device is possible due to the handheld nature, where a user would move around and capture the entire area. Figure \ref{fig:TLSandMLS} shows a MLS and TLS device.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/HoverMap.png}
@@ -67,22 +67,73 @@ Multiple forms of LiDAR systems can be used for various applications. For exampl
   \label{fig:TLSandMLS}
 \end{minipage}
 
-
-
-\Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare. This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
+\Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare (\Textcite{cloudcomparesoftware}). This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
 
 The overall procedure in investigating both LiDAR systems involves with firstly determining hardware settings and object to be scanned, followed by performing the scan to create a dense point cloud. The resulting point clouds will then be aligned and compared to each other qualitative and quantitatively. More details regarding the project procedure will be discussed in the methods section.
 
-
-
 \section{Method}
 
-\subsection{Point Cloud Registration}
-\subsubsection{Manual Alignment}
+\subsection{Initial Settings and Point Cloud Capturing}
 
+The building chosen was a room in the University of Melbourne Building 207-221 Bouverie St. For the remainder of the report, the MLS will refer to the Hovermap Emesent and the TLS will refer to the FAROFocus.
+
+Initial settings were set to capture an indoor area with a range of 10m (ie., the room boundaries are within 10m of the TLS). The TLS was also configured to capture images using colour. Afterwards, the resolution and quality settings are set to 1/5 and 4x respectively. The resolution indicates that one in every 5 points would be scanned, and the quality indicates that each of these scans would occur 4 times. Additional setting for the TLS such as the pixel dimensions of each scan and time taken 
+for the scan can be seen in figure \ref{fig:TLSSettings}. A scan was then executed with these settings
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/3 ,width=\textwidth/3]{figures/IMG20240418194000.jpg}
+  \captionof{figure}{Settings for the TLS}
+  \label{fig:TLSSettings}
+\end{minipage}
+
+The MLS was first connected to its mobile app. After this connection is established, the app can be used to control its operation (ie., starting and stopping its scan). The MLS was moved around the room and for each area, the MLS was held for a few seconds to ensure that it could capture the entire area. Places where might not be captured by the MLS easily (e.g., under a table or an object that is high on the walls) would be further scanned using different angles.
+
+
+\subsection{TLS and MLS Point Cloud Alignment}
+
+\subsubsection{Manual Alignment}
+Both point clouds were added to the CloudCompare workingspace. Using the rotation and trasnlation tools, the MLS point cloud was carefully oriented to overlap with the orientation and position in space of the TLS. Figure \ref{fig:manualAlignment} shows the difference of orientation after manual alignment. The grey point clouds are from the MLS, while the point cloud with more colour is from the TLS.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/InitialAlignments.png}
+  \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/FinalAlignments.png}
+  \captionof{figure}{Inital alignments when point clouds were added (left) and the result of manual alignment (right)}
+  \label{fig:manualAlignment}
+\end{minipage}
+
+Visual inspection was done at this stage to identify whether or not each point cloud appeared to be aligned. Afterwards, coarse and fine registration was used to identify the errors in alignment.
+
+\subsubsection{Coarse and Fine Registrations}
+Coarse registration is done by using the align (point pairs picking) tool in CloudCompare. This tool performs references one point cloud to the other using reference points selected manually. A total of 6 (3 in each point cloud) reference points were selected. The MLS is the to-be-aligned entity, while the TLS was the reference point cloud.
+
+Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only possible after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. 
+
+For both registrations, the registration errors (RMSE) (in meters) and transformation matrices were recorded after registration was completed.
+
+\subsection{Cloud to Cloud Distance}
+
+Cloud to cloud distances were then calculated using the Cloud-Cloud Dist tool. This tool calculates the distances from the points present in each cloud. Initally, there was no maximum distance placed this distance to distance calculation. This was done in order to identify what areas have high distances. Figure \ref{fig:nomaxdistance} shows the cloud to cloud distance without any maximum distance. 
+
+
+Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9m), and that the RMSEs obtained from registration was approximately 0.2m, the maximum distance was set at 1 in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4m and 8m). However, these proved to be not very informative as the entire overlapping area only had one colour.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/noMaxDistance.png}
+  \captionof{figure}{Cloud to Cloud Distance Without Maximum Distance}
+  \label{fig:nomaxdistance}
+\end{minipage}
+
+After cloud to cloud distances were obtained and visualized, the TLS and MLS point clouds were exported as text files for further analysis in the results section. 
 
 \section{Results}
-Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
+
+\subsection{Registration Errors}
+
+\subsection{Cloud to Cloud Distance Results}
+
+\subsection{Completeness of Point Clouds}
+
+Table~\ref{tab:BasicTable} summarizes the data. 
 \vspace{20pt}
 
 \begin{minipage}{\linewidth}
@@ -99,25 +150,8 @@ Table~\ref{tab:BasicTable} summarizes the data. \lipsum[1-3]
   \end{tabular}
 \end{minipage}
 
-\vspace{20pt}
-
-\lipsum[1]
-
-Figure~\ref{fig:Figure1} shows this trend.
-
-\vspace{20pt}
-\begin{minipage}{\linewidth}
-  \includegraphics[bb=0in 0in 2.5in 2.5in, height=2.5in, width=2.5in]{figures/Figure1.pdf}
-  \captionof{figure}{This is my first figure caption.}
-  \label{fig:Figure1}
-\end{minipage}
 
 \section{Discussion}
-\lipsum[17]
-
-\lipsum[18]
-
-\lipsum[19]
 
 \printbibliography
 
