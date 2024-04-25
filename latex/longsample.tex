@@ -48,10 +48,12 @@
 \authorsaffiliations{GEOM90038 - Advanced Imaging}
 
 \begin{document}
-\maketitle
-\vspace{-6em}
-\section{Introduction\vspace{-5em}}
 
+\maketitle
+\tableofcontents
+\newpage
+\section{Introduction}
+\vspace{-5em}
 Light detection and ranging (LiDAR) sensor consists of a transmitter and a receiver. The transmitter contains a laser that emits beams of light, while the receiver collects the photons that return from the transmitted laser (\Textcite{wandinger2005}). Figure \ref{fig:lidarSetup} shows a simple representation of a LiDAR system.
 
 \begin{minipage}{\linewidth}
@@ -162,14 +164,15 @@ The full C2C distances consists of millions of points, and so will be omitted fr
   \label{tab:RMStable}
   \begin{tabular}{@{}llrr@{}}         \toprule
   \multicolumn{4}{c}{C2C Distance Statistics }        \\ \toprule{}
-  &  All Distances|    & Distances Under or Equal to 1| & Distances Above 1 \\ \midrule
-  Number of Points & 30,663,458  & 30,648,582  & 22,907  \\
-  \% of Total Points & 100\% & 99.95\% & 0.05\% \\
+  &  All Distances|    & Distances <= 1| & Distances > 1 \\ \midrule
+  Number of Points & 30,663,458  & 30,640,551  & 22,907  \\
+  \% of Total Points (rounded to 2 significant figures) & 100\% & 99.93\% & 0.00075\% \\
   Mean (relative units)      & 0.091 & 0.090 & 2.349  \\
   Median (relative units)    & 0.039 &  0.039  & 1.425   \\
-  Maximum Value (relative units)       & 15.575  & 1.245  & 15.575   \\
+  Maximum Value (relative units)       & 15.575  & 0.99998  & 15.575   \\
   Minimum Value (relative units)       & \num{1.4e-05}  & \num{1.4e-05} & 1.000001  \\
-  Standard Deviation (relative units)  & 0.162  & 0.139 & 2.141 \\ \bottomrule
+  Standard Deviation (relative units)  & 0.162  & 0.139 & 2.141 \\ 
+  Approximate Max Error \footnote{Max error was calcualted using CloudCompare, which only allows a setting of maximum distance, not minumum distance. As such, distances less than 1 was possible through the use of iteratively subsectioning and checking the maximum distance until the max distance was approximately 1, and then running a distance computation. This is not possible to be done with distances greater than 1. A through description of this proccess is found in Appendix A.} & 0.09 &  0.046 & N/A \\ \bottomrule
   \end{tabular}
 \end{minipage}
 
@@ -194,18 +197,85 @@ To further investigate these distances, a histogram of the C2C distance was crea
   \label{fig:c2chistogram}
 \end{minipage}
 
-The proportion of points that are less than 1 is much higher (99.95\% of the total point cloud) than points that are greater than 1 (0.05\% of the total point cloud), as seen in table \ref{tab:RMStable}. For those with distances less than or equal to 1, the probability of points being less than 0.2 is much greater than the probability of a point being above 0.2, with most of the distances being close to 0, slowly reducing in frequency and eventually plateauing without any significant increase in frequencies. This indicates a high accuracy in the alignment and overlapping of both point clouds. This is also shown in figure \ref{fig:maxdistanceset}, where most of the overlapping areas of the TLS and MLS point clouds are coloured blue, indicating very close C2C distances for that area.
+The proportion of points that are less than 1 is much higher (99.93\% of the total point cloud) than points that are greater than 1 (0.00075\% of the total point cloud), as seen in table \ref{tab:RMStable}. For those with distances less than or equal to 1, the probability of points being less than 0.2 is much greater than the probability of a point being above 0.2, with most of the distances being close to 0, slowly reducing in frequency and eventually plateauing without any significant increase in frequencies. This indicates a high accuracy in the alignment and overlapping of both point clouds. This is also shown in figure \ref{fig:maxdistanceset}, where most of the overlapping areas of the TLS and MLS point clouds are coloured blue, indicating very close C2C distances for that area. 
 
-Meanwhile, the probability distribution of points that have C2C distances greater than 1 show slightly more distribution. While the probability also is highest at the start and slowly decreases, there is a significant increase occuring in the range of 3-5 and 9-10. Looking at figure \ref{fig:nomaxdistance}, there are areas where the MLS point cloud drifts away from the TLS point cloud, which are shown in green. The scale indicates green starting at about 3 C2C distances and ending at about 7.7 C2C distances. This would explain the frequency increase seen in the histogram. However, this increase goes back down in the histogram. Again looking at figure \ref{fig:nomaxdistance}, there is a section in which the MLS point cloud extends from the TLS point cloud, before there being a large amount of empty space, before further errors shown. These errors are indicated in red, which range from 11-15 C2C distances. This would explain why the histogram shows an increase in the 3-5 range, before going back down and coming back up at the 9-10 range, as the 3-5 range represents the green errors, while the 9-10 range represents the red errors, and that these two error areas are separated by a significant of empty looking space.
+Meanwhile, the probability distribution of points that have C2C distances greater than 1 show slightly more distribution. Similar to the C2C distances that are less than one, most of the C2C distances are clustered before 3. These points are representative of higher C2C distances found in figure \ref{fig:maxdistanceset} where red colours are surrounding the overlapping area of the point clouds. However, there are areas in which there is gross difference in the calculated distances, as seen in figure \ref{fig:grossError}. To investigate this, the significant increases after 3 C2C distance will be investigated.
+
+There are significant increases occuring in the range of 3-5 and 9-10. Looking at figure \ref{fig:nomaxdistance}, there are areas where the MLS point cloud drifts away from the TLS point cloud, which are shown in green. A visualization of the areas described with large C2C distances are shown in figure \ref{fig:grossError}. The scale indicates green starting at about 3 C2C distances and ending at about 7.7 C2C distances. This would explain the frequency increase seen in the histogram. However, this increase goes back down in the histogram. Again looking at figure \ref{fig:grossError}, there is a section in which the MLS point cloud extends from the TLS point cloud, before there being a large amount of empty space, followed by further errors shown. These errors are indicated in red, which range from 11-15 C2C distances. This would explain why the histogram shows an increase in the 3-5 range, before going back down and coming back up at the 9-10 range, as these two error areas are separated by a significant of empty space. 
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/grossError.png}
+  \captionof{figure}{Area With Large C2C Distances in the MLS Point Cloud}
+  \label{fig:grossError}
+\end{minipage}
+
+These results show good accuracy in the alignment of the point clouds, as the C2C distances are mostly low (99.5\% being under 1, with most of these point being close to 0). For the area in which C2C distances are greated than 1, these points are much less influential on the results due to their low proportion relative to the whole point cloud (0.00075\%). Furthermore, even within that 0.00075\%, the outliers in \ref{fig:grossError} make up an even smaller proportion of the point clouds, with most distances being in the 1-3 C2C distances range. The average C2C distances for points that are not gross outliers (less than 1), are also very low, with a mean of 0.09. Some areas of the point clouds also had distances of \num{1.4e-5}, which is very close to 0. The maximum error of points that were relevant to the area being modeled is also at 0.046, indicating a low error rate.
 
 \subsection{Completeness of Point Clouds}
 
-To investigate the completeness of each point cloud, a subsection of each 
+To investigate the completeness of each point cloud, figure \ref{fig:maxdistanceset} was investigated. Visual inspection shows that there are areas with high C2C distances, shown in red. Most of these points are areas in which there is no overlap with the TLS point cloud area, like those described when discussing the probability distribution above. These areas are likely due to a lack of correspondence and have no overlap with the area being modelled (the room). However, some areas show high C2C distances even when the area is overlapping. Particularly, on the flooring area of the building. To further investigate, the point clouds were subsampled, reducing the amount of points in each cloud. This allows an inspection of the inside of the room. These are shown in figure \ref{fig:subsampledareas}.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/subsampledMLS.png}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/subsampledTLS.png}
+  \captionof{figure}{Subsampled areas of the MLS (left) and the TLS (right) point clouds}
+  \label{fig:subsampledareas}
+\end{minipage}
+
+The subsampling of the MLS shows that areas inside the room had a significant amount of high C2C distances, even when it was overlapping with the TLS point cloud. The TLS point cloud subsample could indicate why this was the case, as the flooring area of the room had a large area in which there are no points. This could be due to the position of the TLS apparatus and orientation of the room, which has a lot of objects blocking the TLS apparatus' field of view. To further investigate, a top-down view of the subsection of both MLS and TLS point clouds are shown in figure \ref{fig:subsectionedAreas}.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/subsectionedMLS.png}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/subsectionedTLS.png}
+  \captionof{figure}{Subsectioned areas of the MLS (left) and the TLS (right) point clouds with a top-down view}
+  \label{fig:subsectionedAreas}
+\end{minipage}
+
+The subsectioned areas show where the blindspots of the TLS apparatus are due to a blocked field of view (including under it, where the tripod was positioned). Mostly, these are found in the floors, explaining why in the TLS subsection in figure \ref{fig:subsectionedAreas} above has high C2C distances (ranging from green to red) \footnote{The MLS subsection was taken from the model in figure \ref{fig:maxdistanceset}}. This shows how in terms of completeness, TLS was unable to create a whole complete reconstruction of the room, while MLS was able to do this. This would make sense, as the MLS was moved around to capture every part of the room and if there was something blocking its field of view, the MLS apparatus could simply be moved around to capture around the blocked area, while the TLS needs to remain stationary. The completeness of the MLS however, also brings some disadvantages. To illustrate, figure \ref{fig:grossError} shows areas where there are point clouds much further away from the area trying to be modelled, and this is present only in the MLS point cloud.
+
+While the field of view issue causes large C2C distances, it is not the only area in which there are large C2C distances. Some areas that have overlap in both TLS and MLS point clouds and not being hindered by the field of view blockage are shown to have green C2C distances (\ref{fig:subsectionedAreas}). This could be due to how the area being modelled was not being kept consistent (e.g., people were moving around). This causes inconsistent point cloud generatoin, and thus increased C2C distances in these areas. This shows that the point cloud might be complete in some areas for both TLS and MLS point clouds, but the inconsistent environment leads to increased C2C distances.
+
+Another point to make regarding completeness is that TLS is able to capture images in colour, while the MLS only shows the density of points obtained in the area, as seen when the images were first placed into CloudCompare (figure \ref{fig:manualAlignment}). In this sense, TLS is more "complete" as it captures more information regarding the area being modelled, that is the colours of the room. Furthermore, neither MLS or TLS were able to capture the exterior of the building. This is more obvious for the TLS, as seen in figure \ref{fig:exteriorArea}.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/exteriorTLS.png}
+  \captionof{figure}{Exterior View of A Wall in the TLS Point Cloud}
+  \label{fig:exteriorArea}
+\end{minipage}
+
+The exterior walls of the TLS point cloud are shown to have textures of things inside the room, such as the people walking around. This is due to how the TLS also captures colours. As for the MLS, it would not have this problem as it was not capturing colours. However, the shape of the exterior would still not be completely accurate. In short, it could be summarised as the TLS not being able to capture both the shape and colour of exteriors, while the MLS is unable to capture only the shape as it doesnt capture colours.
 
 \newpage
+
 \section{Conclusion}
 
+In this report, I have successfully compared two point clouds from a MLS and TLS apparatus. I have showed the RMS errors resulting fro alignment of both point clouds, as well as the C2C distances and compared the completeness. Overall, the comparison of the point clouds show good accuracy (with RMSE of fine registration being 2.27cm total). In addition, the C2C distances display low C2C distances dominating the distributions shown in \ref{fig:c2chistogram}. 
+
+However, certain areas still show low quality of point cloud registration, particularly the outliers in the MLS point cloud and the blind spots in the TLS. \Textcite{conti2024} suggested that TLS is better for higher quality and detailed modelling, while MLS provides a better and more efficient workflow. Based on my report, this is true, where TLS is able to capture colours and more details on objects (as seen in how the resulting point cloud is more interpretable as to what the room actually looks like). On the other hand, the MLS point cloud is difficult to distinguish what objects are which, as they do not capture colour. However, there are nuances that should be considered as well when talking about the use of each MLS and TLS. MLS was able to capture more areas without being limited by its blind spot, albeit at the cost of outliers. Meanwhile, TLS had a lot of blind spots that it could not capture, but it did not have many outliers and for the areas that it did capture, it captured with high quality.
+
+A combination of both TLS and MLS
+
 \printbibliography
+
+\newpage
+
+\section{Appendix}
+Appendix A - Obtaining Max Error for Maximum Distances of About 1
+
+To obtain the max errors, the subsectioning was done to remove outlying points, as shown in \ref{fig:subsectionSample}. This causes more \% of the points between the TLS and MLS to overlap for the distance calculations. The two subsectioned areas then went a C2C distance calculation like those described in the Cloud to Cloud Distance in the methodolgy section. The resulting maximum error was then noted, as shown in figure \ref{fig:subsectionResults} The initial results (all of the points being used for C2C Distance also showed a resulting section like those in figure \ref{fig:subsectionResults}).
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/6 ,width=\textwidth/2]{figures/exampleSubsectioning.png}
+  \captionof{figure}{Process of Subsectioning}
+  \label{fig:subsectionSample}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/exampleSubsectioning2.png}
+  \captionof{figure}{Results of C2C Distance Calculations After Subsectioning the MLS}
+  \label{fig:subsectionResults}
+\end{minipage}
+
 
 
 \end{document}
