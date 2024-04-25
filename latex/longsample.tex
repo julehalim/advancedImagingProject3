@@ -134,7 +134,7 @@ Investigating this distance map showed that most of the areas where the point cl
 
 After cloud to cloud distances were obtained and visualized, the TLS and MLS point clouds were exported as text files for further analysis in the results section. 
 \newpage
-\section{Results and Discussions}
+\section{Results and Analysis}
 
 \subsection{Registration Errors}
 
@@ -247,13 +247,17 @@ The exterior walls of the TLS point cloud are shown to have textures of things i
 
 \newpage
 
-\section{Conclusion}
+\section{Conclusion and Discussion}
 
 In this report, I have successfully compared two point clouds from a MLS and TLS apparatus. I have showed the RMS errors resulting fro alignment of both point clouds, as well as the C2C distances and compared the completeness. Overall, the comparison of the point clouds show good accuracy (with RMSE of fine registration being 2.27cm total). In addition, the C2C distances display low C2C distances dominating the distributions shown in \ref{fig:c2chistogram}. 
 
-However, certain areas still show low quality of point cloud registration, particularly the outliers in the MLS point cloud and the blind spots in the TLS. \Textcite{conti2024} suggested that TLS is better for higher quality and detailed modelling, while MLS provides a better and more efficient workflow. Based on my report, this is true, where TLS is able to capture colours and more details on objects (as seen in how the resulting point cloud is more interpretable as to what the room actually looks like). On the other hand, the MLS point cloud is difficult to distinguish what objects are which, as they do not capture colour. However, there are nuances that should be considered as well when talking about the use of each MLS and TLS. MLS was able to capture more areas without being limited by its blind spot, albeit at the cost of outliers. Meanwhile, TLS had a lot of blind spots that it could not capture, but it did not have many outliers and for the areas that it did capture, it captured with high quality.
+However, certain areas still show low quality of point cloud registration, particularly the outliers in the MLS point cloud and the blind spots in the TLS. \Textcite{conti2024} suggested that TLS is better for higher quality and detailed modelling, while MLS provides a better and more efficient workflow. Based on my report, this is true, where TLS is able to capture colours and more details on objects (as seen in how the resulting point cloud is more interpretable as to what the room actually looks like). On the other hand, the MLS point cloud is difficult to distinguish what objects are which, as they do not capture colour. However, there are nuances that should be considered as well when talking about the use of each MLS and TLS. MLS was able to capture more areas without being limited by its blind spot, albeit at the cost of outliers. Meanwhile, TLS had a lot of blind spots that it could not capture, but it did not have many outliers and for the areas that it did capture, it captured with high quality. 
 
-A combination of both TLS and MLS
+The issues described above show the way MLS and TLS can complement each other. MLS is able to have an efficient workflow where areas difficult to reach can be recorded and scanned. Meanwhile, TLS provide the high quality that a model might require. One example of how these two LiDAR methods can be used together is suggested by \Textcite{Levick2021}, which performed a study on both MLS and TLS methods in mapping forestry. They suggested that the TLS could act as a calibration and validation tool for MLS. A similar approach to this calibration and validation with TLS is present in this report. In the context of this report, the MLS point cloud of the room was validated with the TLS, which resulted in the ability to identify outliers and which areas might tend to cause more errors. Using both also serves to decide which errors are acceptable and which erroneous point clouds could be removed. For instance, the floor not being scanned by the TLS would not be an issue if we were only using the MLS point cloud to perform imaging, but outliers caused by the MLS itself would have to be removed. Being able to identify the two was also a result of using the TLS to verify the MLS.
+
+Furthermore, while the Hovermap Esement MLS is not able to capture colours, some other MLS apparatus have the capacity to capture colours, such as the Artec Leo (\Textcite{artecleo}), these are generally very expensive, but could provide an additional layer of verification and calibration by comparing the colours obtained from the MLS and the TLS. Nevertheless, MLS calibration by TLS for MLS cloud points without colours still has its place. For example, the government of Western Australia released a MLS scanning standard for its roads (\Textcite{scanningStandard}). This manual states that "RGB colour point cloud is not required for Design Grade and Concept Grade MLS", showing that even in real life-applications, MLS without colours can still be calibrated with TLS to ensure prescision and identify and possible errors in scanning.
+
+In conclusion, I have successfully compared MLS and TLS point clouds using CloudCompare, identifying possible outliers and errors as well as suggesting reasons for these errors (e.g., blind spot in TLS). I have also compared the quality of TLS and MLS scanning, showing that there are nuances on which to choose (e.g., choosing high quality models with the TLS or model areas that might have blind spots with the MLS). Furthermore, I have also suggested that using both TLS and MLS can allow for verification and evaluation of an MLS point cloud, allowing identification of error sources even if the TLS has blind spots (e.g., outliers caused by MLS or an acceptable error such as the errors caused by the missing floor).
 
 \printbibliography
 
