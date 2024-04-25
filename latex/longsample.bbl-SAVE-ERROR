@@ -19,6 +19,40 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{cloudcomparesoftware}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
+           family={{CloudCompare}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{bibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorbibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authornamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{3}
+      \field{title}{CloudCompare 'Unified'}
+      \field{version}{2.13.1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+      \verb{url}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+    \endentry
     \entry{conti2024}{article}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=d7b54f88fd46bc02b4f60210781656b1}{%
@@ -128,6 +162,36 @@
       \verb{url}
       \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
       \endverb
+    \endentry
+    \entry{girardeau2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0dfcfb91724c067f230efabe5f4458a2}{%
+           family={Girardeau-Montaut},
+           familyi={G\bibinithyphendelim M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{bibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorbibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authornamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{France: EDF R\&D Telecom ParisTech}
+      \field{number}{5}
+      \field{title}{CloudCompare}
+      \field{volume}{11}
+      \field{year}{2016}
     \endentry
     \entry{wandinger2005}{inbook}{}{}
       \name{author}{1}{}{%
@@ -164,6 +228,40 @@
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
+    \entry{cloudcomparesoftware}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
+           family={{CloudCompare}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{bibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorbibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authornamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{3}
+      \field{title}{CloudCompare 'Unified'}
+      \field{version}{2.13.1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+      \verb{url}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+    \endentry
     \entry{conti2024}{article}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=d7b54f88fd46bc02b4f60210781656b1}{%
@@ -273,6 +371,36 @@
       \verb{url}
       \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
       \endverb
+    \endentry
+    \entry{girardeau2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0dfcfb91724c067f230efabe5f4458a2}{%
+           family={Girardeau-Montaut},
+           familyi={G\bibinithyphendelim M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{bibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorbibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authornamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{France: EDF R\&D Telecom ParisTech}
+      \field{number}{5}
+      \field{title}{CloudCompare}
+      \field{volume}{11}
+      \field{year}{2016}
     \endentry
     \entry{wandinger2005}{inbook}{}{}
       \name{author}{1}{}{%

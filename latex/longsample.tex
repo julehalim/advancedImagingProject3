@@ -36,6 +36,8 @@
 \usepackage{caption} % For captioning outside figures
 \usepackage{capt-of} % For captioning outside figures
 
+\usepackage{siunitx}
+
 \usepackage{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
@@ -70,15 +72,14 @@ Multiple forms of LiDAR systems can be used for various applications. For exampl
 \Textcite{conti2024} found that the MLS is able to create a streamlined and efficient workflow that is suitable for the documentation of heritage buildings. However, where a higher level of detail is required, the TLS would be more suitable. In this report, I aim to investigate the differences in the MLS and TLS through using the LiDAR systems shown in figure 2. Dense point clouds will be obtained for each system before being compared using the open source software CloudCompare (\Textcite{cloudcomparesoftware}). This software has been shown to be able to compare two different point clouds and investigate their respective quality (\Textcite{girardeau2016}). 
 
 The overall procedure in investigating both LiDAR systems involves with firstly determining hardware settings and object to be scanned, followed by performing the scan to create a dense point cloud. The resulting point clouds will then be aligned and compared to each other qualitative and quantitatively. More details regarding the project procedure will be discussed in the methods section.
-
+\newpage
 \section{Method}
 
 \subsection{Initial Settings and Point Cloud Capturing}
 
 The building chosen was a room in the University of Melbourne Building 207-221 Bouverie St. For the remainder of the report, the MLS will refer to the Hovermap Emesent and the TLS will refer to the FAROFocus.
 
-Initial settings were set to capture an indoor area with a range of 10m (ie., the room boundaries are within 10m of the TLS). The TLS was also configured to capture images using colour. Afterwards, the resolution and quality settings are set to 1/5 and 4x respectively. The resolution indicates that one in every 5 points would be scanned, and the quality indicates that each of these scans would occur 4 times. Additional setting for the TLS such as the pixel dimensions of each scan and time taken 
-for the scan can be seen in figure \ref{fig:TLSSettings}. A scan was then executed with these settings
+Initial settings were set to capture an indoor area with a range of 10m (ie., the room boundaries are within 10m of the TLS). The TLS was also configured to capture images using colour. Afterwards, the resolution and quality settings are set to 1/5 and 4x respectively. The resolution indicates that one in every 5 points would be scanned, and the quality indicates that each of these scans would occur 4 times. Additional setting for the TLS such as the pixel dimensions of each scan and time taken for the scan can be seen in figure \ref{fig:TLSSettings}. A scan was then executed with these settings.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/3 ,width=\textwidth/3]{figures/IMG20240418194000.jpg}
@@ -104,7 +105,13 @@ Both point clouds were added to the CloudCompare workingspace. Using the rotatio
 Visual inspection was done at this stage to identify whether or not each point cloud appeared to be aligned. Afterwards, coarse and fine registration was used to identify the errors in alignment.
 
 \subsubsection{Coarse and Fine Registrations}
-Coarse registration is done by using the align (point pairs picking) tool in CloudCompare. This tool performs references one point cloud to the other using reference points selected manually. A total of 6 (3 in each point cloud) reference points were selected. The MLS is the to-be-aligned entity, while the TLS was the reference point cloud.
+Coarse registration is done by using the align (point pairs picking) tool in CloudCompare. This tool performs references one point cloud to the other using reference points selected manually. A total of 6 (3 in each point cloud) reference points were selected. The MLS is the to-be-aligned entity, while the TLS was the reference point cloud. Figure \ref{fig:roughAlignment} shows the coordinates and positions of the 6 reference points selected. The total RMS is also shown in the same image.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=200px,width=450px]{figures/RoughAlignment1.png}
+  \captionof{figure}{Rough Alignment Showing the Points Used for Referencing}
+  \label{fig:roughAlignment}
+\end{minipage}
 
 Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only possible after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. 
 
@@ -115,7 +122,7 @@ For both registrations, the registration errors (RMSE) (in meters) and transform
 Cloud to cloud distances were then calculated using the Cloud-Cloud Dist tool. This tool calculates the distances from the points present in each cloud. Initally, there was no maximum distance placed this distance to distance calculation. This was done in order to identify what areas have high distances. Figure \ref{fig:nomaxdistance} shows the cloud to cloud distance without any maximum distance. 
 
 
-Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9m), and that the RMSEs obtained from registration was approximately 0.2m, the maximum distance was set at 1 in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4m and 8m). However, these proved to be not very informative as the entire overlapping area only had one colour.
+Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9 relative units), and that the RMSEs obtained from registration was approximately 0.2 relative units, the maximum distance was set at 1 relative unit in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4 and 8). However, these proved to be not very informative as the entire overlapping area only had one colour.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/noMaxDistance.png}
@@ -124,80 +131,81 @@ Investigating this distance map showed that most of the areas where the point cl
 \end{minipage}
 
 After cloud to cloud distances were obtained and visualized, the TLS and MLS point clouds were exported as text files for further analysis in the results section. 
-
-\section{Results}
+\newpage
+\section{Results and Discussions}
 
 \subsection{Registration Errors}
 
-\subsection{Cloud to Cloud Distance Results}
-
-\subsection{Completeness of Point Clouds}
-
-Table~\ref{tab:BasicTable} summarizes the data. 
-\vspace{20pt}
+RMSE and transformation matrices for coarse and fine registrations are shown in figures \ref{fig:rmsecoarsefine}.
 
 \begin{minipage}{\linewidth}
-  \captionof{table}{Sample Basic Table}
-  \label{tab:BasicTable}
-  \begin{tabular}{@{}llr@{}}         \toprule
-  \multicolumn{2}{c}{Item}        \\ \cmidrule(r){1-2}
-  Animal    & Description & Price \\ \midrule
-  Gnat      & per gram    & 13.65 \\
-            & each        &  0.01 \\
-  Gnu       & stuffed     & 92.50 \\
-  Emu       & stuffed     & 33.33 \\
-  Armadillo & frozen      &  8.99 \\ \bottomrule
+  \includegraphics[height=\textheight/4 ,width=\textwidth/3]{figures/RoughAlignment2.png}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/FairAlignment1-30_.png}
+  \captionof{figure}{RMSE and Transformation Matrices for Coarse (left) and Fine (right) Registration}
+  \label{fig:rmsecoarsefine}
+\end{minipage}
+
+Theoretical overlap is a parameter that is used in fine registration to indicate how many percent of the points are expected to overlap from one another. Multiple values ranging from 10-100\% were tested. However, 30\% was selected as the final value in order to reduce the final RMS.
+
+The RMS values show great accuracy, with the coarse registration having an RMS of 1.16cm while the fine registration has 2.27cm of total errors.
+
+
+\subsection{Cloud to Cloud Distance Results}
+
+The full C2C distances consists of millions of points, and so will be omitted from this report. The means and standard deviations of C2C distances are shown in table \ref{tab:RMStable}. All three statistical measures were shown for the set of distances calulated for all point clouds, for the section where only distances less than or equal to 1 were kept, and sections where distances were greater than 1.
+
+\begin{minipage}{\linewidth}
+  \small
+  \captionof{table}{Table Showing Statistical Information About C2C Distances}
+  \setlength{\tabcolsep}{3pt} % reduce column spacing
+  \renewcommand{\arraystretch}{0.8} % reduce row spacing
+  \label{tab:RMStable}
+  \begin{tabular}{@{}llrr@{}}         \toprule
+  \multicolumn{4}{c}{C2C Distance Statistics }        \\ \toprule{}
+  &  All Distances|    & Distances Under or Equal to 1| & Distances Above 1 \\ \midrule
+  Number of Points & 30,663,458  & 30,648,582  & 22,907  \\
+  \% of Total Points & 100\% & 99.95\% & 0.05\% \\
+  Mean (relative units)      & 0.091 & 0.090 & 2.349  \\
+  Median (relative units)    & 0.039 &  0.039  & 1.425   \\
+  Maximum Value (relative units)       & 15.575  & 1.245  & 15.575   \\
+  Minimum Value (relative units)       & \num{1.4e-05}  & \num{1.4e-05} & 1.000001  \\
+  Standard Deviation (relative units)  & 0.162  & 0.139 & 2.141 \\ \bottomrule
   \end{tabular}
 \end{minipage}
 
+Figure \ref{fig:nomaxdistance} above shows the spatial distribution of errors with no maximum limit while figure \ref{fig:maxdistanceset} shows the distribution of distances with C2C distances less than 1.
 
-\section{Discussion}
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/DistanceModel2.png}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/DistanceModel.png}
+  \captionof{figure}{Spatial Distribution of C2C Distances From Above (left) and Below (right) for Distances Less than 1}
+  \label{fig:maxdistanceset}
+\end{minipage}
+
+As seen in figures \ref{fig:manualAlignment}, \ref{fig:nomaxdistance}, and \ref{fig:maxdistanceset}, most of the TLS and MLS point clouds have a significant amount of overlap. However, there are still some areas in which the MLS deviates from the TLS point cloud. Particularly, the areas in figure  \ref{fig:maxdistanceset} where the point clouds are red. This indicates that they have a high amount of C2C distances.
+
+
+To further investigate these distances, a histogram of the C2C distance was created from the saved text file of the MLS. Figure \ref{fig:c2chistogram} shows the histogram for C2C distances less than or equal to 1 and distances greater than 1.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/MLSC2CHistogramWithLine.png}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/MLSC2CHistogramWithLine2.png}
+  \captionof{figure}{Probability distribution of distances less than or equal to 1 (left) and distances higher than 1(right). Note that frequency for the left table is multiplied by \num{1e8}}
+  \label{fig:c2chistogram}
+\end{minipage}
+
+The proportion of points that are less than 1 is much higher (99.95\% of the total point cloud) than points that are greater than 1 (0.05\% of the total point cloud), as seen in table \ref{tab:RMStable}. For those with distances less than or equal to 1, the probability of points being less than 0.2 is much greater than the probability of a point being above 0.2, with most of the distances being close to 0, slowly reducing in frequency and eventually plateauing without any significant increase in frequencies. This indicates a high accuracy in the alignment and overlapping of both point clouds. This is also shown in figure \ref{fig:maxdistanceset}, where most of the overlapping areas of the TLS and MLS point clouds are coloured blue, indicating very close C2C distances for that area.
+
+Meanwhile, the probability distribution of points that have C2C distances greater than 1 show slightly more distribution. While the probability also is highest at the start and slowly decreases, there is a significant increase occuring in the range of 3-5 and 9-10. Looking at figure \ref{fig:nomaxdistance}, there are areas where the MLS point cloud drifts away from the TLS point cloud, which are shown in green. The scale indicates green starting at about 3 C2C distances and ending at about 7.7 C2C distances. This would explain the frequency increase seen in the histogram. However, this increase goes back down in the histogram. Again looking at figure \ref{fig:nomaxdistance}, there is a section in which the MLS point cloud extends from the TLS point cloud, before there being a large amount of empty space, before further errors shown. These errors are indicated in red, which range from 11-15 C2C distances. This would explain why the histogram shows an increase in the 3-5 range, before going back down and coming back up at the 9-10 range, as the 3-5 range represents the green errors, while the 9-10 range represents the red errors, and that these two error areas are separated by a significant of empty looking space.
+
+\subsection{Completeness of Point Clouds}
+
+To investigate the completeness of each point cloud, a subsection of each 
+
+\newpage
+\section{Conclusion}
 
 \printbibliography
 
 
 \end{document}
-
-%% 
-%% Copyright (C) 2021 by Daniel A. Weiss <daniel.weiss.led at gmail.com>
-%% 
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License (LPPL), either
-%% version 1.3c of this license or (at your option) any later
-%% version.  The latest version of this license is in the file:
-%% 
-%% http://www.latex-project.org/lppl.txt
-%% 
-%% Users may freely modify these files without permission, as long as the
-%% copyright line and this statement are maintained intact.
-%% 
-%% This work is not endorsed by, affiliated with, or probably even known
-%% by, the American Psychological Association.
-%% 
-%% 
-%% This work is "maintained" (as per LPPL maintenance status) by
-%% Daniel A. Weiss.
-%% 
-%% This work consists of the file  apa7.dtx
-%% and the derived files           apa7.ins,
-%%                                 apa7.cls,
-%%                                 apa7.pdf,
-%%                                 README,
-%%                                 APA7american.txt,
-%%                                 APA7british.txt,
-%%                                 APA7dutch.txt,
-%%                                 APA7english.txt,
-%%                                 APA7french.txt,
-%%                                 APA7german.txt,
-%%                                 APA7ngerman.txt,
-%%                                 APA7greek.txt,
-%%                                 APA7czech.txt,
-%%                                 APA7turkish.txt,
-%%                                 APA7endfloat.cfg,
-%%                                 Figure1.pdf,
-%%                                 shortsample.tex,
-%%                                 longsample.tex, and
-%%                                 bibliography.bib.
-%% 
-%%
-%% End of file `./samples/longsample.tex'.
