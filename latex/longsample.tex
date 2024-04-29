@@ -124,7 +124,7 @@ For both registrations, the registration errors (RMSE) (in meters) and transform
 Cloud to cloud distances were then calculated using the Cloud-Cloud Dist tool. This tool calculates the distances from the points present in each cloud. Initally, there was no maximum distance placed this distance to distance calculation. This was done in order to identify what areas have high distances. Figure \ref{fig:nomaxdistance} shows the cloud to cloud distance without any maximum distance. 
 
 
-Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9 relative units), and that the RMSEs obtained from registration was approximately 0.2 relative units, the maximum distance was set at 1 relative unit in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4 and 8). However, these proved to be not very informative as the entire overlapping area only had one colour.
+Investigating this distance map showed that most of the areas where the point clouds are overlapping have very small distances (most were less than 1.9m), and that the RMSEs obtained from registration was approximately 0.2m, the maximum distance was set at 1m in order to obtain a clearer view of where the errors come from. Higher maximums were also tested (such as 4m and 8m). However, these proved to be not very informative as the entire overlapping area only had one colour.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/noMaxDistance.png}
@@ -164,15 +164,15 @@ The full C2C distances consists of millions of points, and so will be omitted fr
   \label{tab:RMStable}
   \begin{tabular}{@{}llrr@{}}         \toprule
   \multicolumn{4}{c}{C2C Distance Statistics }        \\ \toprule{}
-  &  All Distances|    & Distances <= 1| & Distances > 1 \\ \midrule
+  &  All Distances|    & Distances <= 1m| & Distances > 1m \\ \midrule
   Number of Points & 30,663,458  & 30,640,551  & 22,907  \\
   \% of Total Points (rounded to 2 significant figures) & 100\% & 99.93\% & 0.00075\% \\
-  Mean (relative units)      & 0.091 & 0.090 & 2.349  \\
-  Median (relative units)    & 0.039 &  0.039  & 1.425   \\
-  Maximum Value (relative units)       & 15.575  & 0.99998  & 15.575   \\
-  Minimum Value (relative units)       & \num{1.4e-05}  & \num{1.4e-05} & 1.000001  \\
-  Standard Deviation (relative units)  & 0.162  & 0.139 & 2.141 \\ 
-  Approximate Max Error \footnote{Max error was calcualted using CloudCompare, which only allows a setting of maximum distance, not minumum distance. As such, distances less than 1 was possible through the use of iteratively subsectioning and checking the maximum distance until the max distance was approximately 1, and then running a distance computation. This is not possible to be done with distances greater than 1. A through description of this proccess is found in Appendix A.} & 0.09 &  0.046 & N/A \\ \bottomrule
+  Mean (m)      & 0.091 & 0.090 & 2.349  \\
+  Median (m)    & 0.039 &  0.039  & 1.425   \\
+  Maximum Value (m)       & 15.575  & 0.99998  & 15.575   \\
+  Minimum Value (m)       & \num{1.4e-05}  & \num{1.4e-05} & 1.000001  \\
+  Standard Deviation (m)  & 0.162  & 0.139 & 2.141 \\ 
+  Approximate Max Error(m) \footnote{Max error was calcualted using CloudCompare, which only allows a setting of maximum distance, not minumum distance. As such, distances less than 1 was possible through the use of iteratively subsectioning and checking the maximum distance until the max distance was approximately 1, and then running a distance computation. This is not possible to be done with distances greater than 1. A through description of this proccess is found in Appendix A.} & 0.09 &  0.046 & N/A \\ \bottomrule
   \end{tabular}
 \end{minipage}
 
