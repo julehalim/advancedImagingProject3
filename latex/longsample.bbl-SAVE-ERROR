@@ -19,6 +19,50 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{artecleo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=07c215d5ad76248b4e209b3e1567c93f}{%
+           family={Artec3D},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{bibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorbibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authornamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Artec Leo}
+      \verb{urlraw}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+      \verb{url}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+    \endentry
+    \entry{scanningStandard}{misc}{}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Government of Western Australia}
+      \field{month}{8}
+      \field{title}{Asset and Geospatial Information Branch Survey and Mapping Section}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+    \endentry
     \entry{cloudcomparesoftware}{software}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
@@ -192,6 +236,70 @@
       \field{title}{CloudCompare}
       \field{volume}{11}
       \field{year}{2016}
+    \endentry
+    \entry{Levick2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=00ae2642000de8f9f761c94f6f8b55a0}{%
+           family={Levick},
+           familyi={L\bibinitperiod},
+           given={Shaun\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fe1d680423ad3f54a9dc9d1c9a950bd}{%
+           family={Whiteside},
+           familyi={W\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c67581e96ddc8988924ca419de22fe5}{%
+           family={Loewensteiner},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dbcc75ed60a8793ec9ffa15a70127194}{%
+           family={Rudge},
+           familyi={R\bibinitperiod},
+           given={Mitchel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e90c3126e615a847eb41ea049bac694}{%
+           family={Bartolo},
+           familyi={B\bibinitperiod},
+           given={Renee},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{fullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{fullhashraw}{602389532bccdebd7ef082136406f02c}
+      \strng{bibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorbibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authornamehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{authorfullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorfullhashraw}{602389532bccdebd7ef082136406f02c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2072-4292}
+      \field{journaltitle}{Remote Sensing}
+      \field{number}{2}
+      \field{title}{Leveraging TLS as a Calibration and Validation Tool for MLS and ULS Mapping of Savanna Structure and Biomass at Landscape-Scales}
+      \field{volume}{13}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.3390/rs13020257
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
     \endentry
     \entry{wandinger2005}{inbook}{}{}
       \name{author}{1}{}{%
@@ -228,6 +336,50 @@
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
+    \entry{artecleo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=07c215d5ad76248b4e209b3e1567c93f}{%
+           family={Artec3D},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{bibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorbibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authornamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Artec Leo}
+      \verb{urlraw}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+      \verb{url}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+    \endentry
+    \entry{scanningStandard}{misc}{}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Government of Western Australia}
+      \field{month}{8}
+      \field{title}{Asset and Geospatial Information Branch Survey and Mapping Section}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+    \endentry
     \entry{cloudcomparesoftware}{software}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
@@ -401,6 +553,70 @@
       \field{title}{CloudCompare}
       \field{volume}{11}
       \field{year}{2016}
+    \endentry
+    \entry{Levick2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=00ae2642000de8f9f761c94f6f8b55a0}{%
+           family={Levick},
+           familyi={L\bibinitperiod},
+           given={Shaun\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fe1d680423ad3f54a9dc9d1c9a950bd}{%
+           family={Whiteside},
+           familyi={W\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c67581e96ddc8988924ca419de22fe5}{%
+           family={Loewensteiner},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dbcc75ed60a8793ec9ffa15a70127194}{%
+           family={Rudge},
+           familyi={R\bibinitperiod},
+           given={Mitchel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e90c3126e615a847eb41ea049bac694}{%
+           family={Bartolo},
+           familyi={B\bibinitperiod},
+           given={Renee},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{fullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{fullhashraw}{602389532bccdebd7ef082136406f02c}
+      \strng{bibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorbibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authornamehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{authorfullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorfullhashraw}{602389532bccdebd7ef082136406f02c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2072-4292}
+      \field{journaltitle}{Remote Sensing}
+      \field{number}{2}
+      \field{title}{Leveraging TLS as a Calibration and Validation Tool for MLS and ULS Mapping of Savanna Structure and Biomass at Landscape-Scales}
+      \field{volume}{13}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.3390/rs13020257
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
     \endentry
     \entry{wandinger2005}{inbook}{}{}
       \name{author}{1}{}{%

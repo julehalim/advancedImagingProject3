@@ -95,7 +95,7 @@ The MLS was first connected to its mobile app. After this connection is establis
 \subsection{TLS and MLS Point Cloud Alignment}
 
 \subsubsection{Manual Alignment}
-Both point clouds were added to the CloudCompare workingspace. Using the rotation and trasnlation tools, the MLS point cloud was carefully oriented to overlap with the orientation and position in space of the TLS. Figure \ref{fig:manualAlignment} shows the difference of orientation after manual alignment. The grey point clouds are from the MLS, while the point cloud with more colour is from the TLS.
+Both point clouds were added to the CloudCompare working space. Using the rotation and trasnlation tools, the MLS point cloud was carefully oriented to overlap with the orientation and position in space of the TLS. Figure \ref{fig:manualAlignment} shows the difference of orientation after manual alignment. The grey point clouds are from the MLS, while the point cloud with more colour is from the TLS.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/3,width=\textwidth/2]{figures/InitialAlignments.png}
@@ -107,7 +107,7 @@ Both point clouds were added to the CloudCompare workingspace. Using the rotatio
 Visual inspection was done at this stage to identify whether or not each point cloud appeared to be aligned. Afterwards, coarse and fine registration was used to identify the errors in alignment.
 
 \subsubsection{Coarse and Fine Registrations}
-Coarse registration is done by using the align (point pairs picking) tool in CloudCompare. This tool performs references one point cloud to the other using reference points selected manually. A total of 6 (3 in each point cloud) reference points were selected. The MLS is the to-be-aligned entity, while the TLS was the reference point cloud. Figure \ref{fig:roughAlignment} shows the coordinates and positions of the 6 reference points selected. The total RMS is also shown in the same image.
+Coarse registration is done by using the align (point pairs picking) tool in CloudCompare. This tool performs references one point cloud to the other using reference points selected manually. A total of 6 (3 in each point cloud) reference points were selected. The MLS is the to-be-aligned entity, while the TLS was the reference point cloud. Figure \ref{fig:roughAlignment} shows the coordinates and positions of the 7 pairs of reference points selected. The total RMS is also shown in the same image.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=200px,width=450px]{figures/RoughAlignment1.png}
@@ -115,9 +115,7 @@ Coarse registration is done by using the align (point pairs picking) tool in Clo
   \label{fig:roughAlignment}
 \end{minipage}
 
-Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only possible after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. 
-
-For both registrations, the registration errors (RMSE) (in meters) and transformation matrices were recorded after registration was completed.
+Afterwards, fine registration was performed. This process involved using the fine registration (ICP) tool from CloudCompare. Fine registration is only done after coarse registration. Again, the TLS was the reference point and the MLS was the reference point cloud. For both registrations, the registration errors (RMSE) (in meters) and transformation matrices were recorded after registration was completed.
 
 \subsection{Cloud to Cloud Distance}
 
@@ -149,7 +147,7 @@ RMSE and transformation matrices for coarse and fine registrations are shown in 
 
 Theoretical overlap is a parameter that is used in fine registration to indicate how many percent of the points are expected to overlap from one another. Multiple values ranging from 10-100\% were tested. However, 30\% was selected as the final value in order to reduce the final RMS.
 
-The RMS values show great accuracy, with the coarse registration having an RMS of 1.16cm while the fine registration has 2.27cm of total errors.
+The RMS values show great accuracy, with the coarse registration having an RMS of 1.13cm while the fine registration has 2.27cm of final RMS values.
 
 
 \subsection{Cloud to Cloud Distance Results}
@@ -185,10 +183,45 @@ Figure \ref{fig:nomaxdistance} above shows the spatial distribution of errors wi
   \label{fig:maxdistanceset}
 \end{minipage}
 
+\newpage
+
 As seen in figures \ref{fig:manualAlignment}, \ref{fig:nomaxdistance}, and \ref{fig:maxdistanceset}, most of the TLS and MLS point clouds have a significant amount of overlap. However, there are still some areas in which the MLS deviates from the TLS point cloud. Particularly, the areas in figure  \ref{fig:maxdistanceset} where the point clouds are red. This indicates that they have a high amount of C2C distances.
 
+To study only the overlapping areas, the MLS acted as the reference point cloud for the TLS. This would ensure that only points that are in both TLS and MLS are being investigated, as the TLS has been shown to be a subset of the MLS (figure \ref{fig:maxdistanceset}). Table \ref{tab:RMStable2} shows the statistical information regarding C2C distances where the MLS was acting as the reference point cloud. 
 
-To further investigate these distances, a histogram of the C2C distance was created from the saved text file of the MLS. Figure \ref{fig:c2chistogram} shows the histogram for C2C distances less than or equal to 1 and distances greater than 1.
+\vspace{2em}
+
+\begin{minipage}{\linewidth}
+  \small
+  \captionof{table}{Table Showing Statistical Information About C2C Distances with MLS as the Reference Point Cloud}
+  \setlength{\tabcolsep}{3pt} % reduce column spacing
+  \renewcommand{\arraystretch}{0.8} % reduce row spacing
+  \label{tab:RMStable2}
+  \begin{tabular}{@{}llrr@{}}         \toprule
+  \multicolumn{2}{c}{C2C Distance Statistics }        \\ \toprule{}
+  &  MLS as Reference Point Cloud \\ \midrule
+  Mean (m)      & 0.00091 \\
+  Maximum Value (m)       & 1.55\\
+  Minimum Value (m)       & 0  \\ 
+  Max Error (m) & 0.096 \\\bottomrule
+  \end{tabular}
+\end{minipage}
+
+\vspace{2em}
+
+ Meanwhile, figure \ref{fig:c2cMLS} shows the visualization of the C2C distances of only overlapping points in both point clouds.
+
+ \newpage
+
+ \begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/MLSasReference.png}
+  \captionof{figure}{C2C Distance Visualization of MLS as the Reference Point Cloud}
+  \label{fig:c2cMLS}
+\end{minipage}
+
+As seen in figure \ref{fig:c2cMLS} and table \ref{tab:RMStable2}, the areas in which there is only overlap between the TLS and MLS shows very high quality, where there are no outliers involved. This highlights how the TLS is not prone to many outliers. The distances between both point clouds are also on average, about 0.091cm, compared to the C2C distances when outliers were involved, as seen in table \ref{tab:RMStable}, where the means are about 9cm for the area where all distances were considered. This difference could thus be explained by the outliers inflating the means.
+
+To further investigate these distances, a histogram of the C2C distance was created from the saved text file of the MLS. Figure \ref{fig:c2chistogram} shows the histogram for C2C distances less than or equal to 1 and distances greater than 1. These distances are based on the initial C2C distance calculations in table \ref{tab:RMStable}.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/MLSC2CHistogramWithLine.png}
@@ -235,7 +268,7 @@ The subsectioned areas show where the blindspots of the TLS apparatus are due to
 
 While the field of view issue causes large C2C distances, it is not the only area in which there are large C2C distances. Some areas that have overlap in both TLS and MLS point clouds and not being hindered by the field of view blockage are shown to have green C2C distances (\ref{fig:subsectionedAreas}). This could be due to how the area being modelled was not being kept consistent (e.g., people were moving around). This causes inconsistent point cloud generatoin, and thus increased C2C distances in these areas. This shows that the point cloud might be complete in some areas for both TLS and MLS point clouds, but the inconsistent environment leads to increased C2C distances.
 
-Another point to make regarding completeness is that TLS is able to capture images in colour, while the MLS only shows the density of points obtained in the area, as seen when the images were first placed into CloudCompare (figure \ref{fig:manualAlignment}). In this sense, TLS is more "complete" as it captures more information regarding the area being modelled, that is the colours of the room. Furthermore, neither MLS or TLS were able to capture the exterior of the building. This is more obvious for the TLS, as seen in figure \ref{fig:exteriorArea}.
+Another point to make regarding completeness is that TLS is able to capture images in colour, while the MLS only shows the density of points and intensity obtained in the area, as seen when the images were first placed into CloudCompare (figure \ref{fig:manualAlignment}). In this sense, TLS is more "complete" as it captures more information regarding the area being modelled, that is the colours of the room. Furthermore, neither MLS or TLS were able to capture the exterior of the building. This is more obvious for the TLS, as seen in figure \ref{fig:exteriorArea}.
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/exteriorTLS.png}
@@ -245,7 +278,7 @@ Another point to make regarding completeness is that TLS is able to capture imag
 
 The exterior walls of the TLS point cloud are shown to have textures of things inside the room, such as the people walking around. This is due to how the TLS also captures colours. As for the MLS, it would not have this problem as it was not capturing colours. However, the shape of the exterior would still not be completely accurate. In short, it could be summarised as the TLS not being able to capture both the shape and colour of exteriors, while the MLS is unable to capture only the shape as it doesnt capture colours. 
 
-In conclusion, MLS can generally be considered more complete as it covers a more complete area, albeit at the risk of getting outliers. TLS, while has less coverage and thus less completeness, can capture colours of the area being scanned. However, both MLS and TLS are not able to capture exterior shapes due to the physical limitations of the apparatus and the space.
+In conclusion, MLS can generally be considered more complete as it covers a more complete area, albeit at the risk of getting outliers. TLS, while it has less coverage and thus less completeness, can capture colours of the area being scanned. However, both MLS and TLS are not able to capture exterior shapes due to the physical limitations of the apparatus and the space.
 
 \section{Conclusion and Discussion}
 
